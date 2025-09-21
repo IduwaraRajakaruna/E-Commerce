@@ -30,8 +30,12 @@ const userSchema = mongoose.Schema({
         type: String,
         default: 0,
     },
-    
-})
+
+},
+{
+    timestamps: true,
+}
+);
 
 const User = mongoose.model("User", userSchema);
 
