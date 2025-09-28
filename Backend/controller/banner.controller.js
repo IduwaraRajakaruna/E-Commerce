@@ -28,14 +28,15 @@ const deleteBanner = asyncHandler(async (req,res)=>{
 });
 
 //GET ALL BANNERS
-const grtAllBanners = asyncHandler(async(res,res)) =>{
+const getAllBanners = asyncHandler(async(req,res) =>{
     const banners = await Banner.find({});
     if(!banners){
         res.status(400);
         throw new Error("No banners banners were not fetched or somthing");
     }else{
         res.status(200).json(banners);
-}};
+}
+});
 
 //GET RANDOM BANNER
 const getRandomBanner = asyncHandler(async(req,res)=>{
