@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import { errorHandler, notFound } from './middleware/error.middleware.js';
 import authRoute from './routes/auth.route.js';
 import productRoute from './routes/product.route.js';
+import bannerRoute from './routes/banner.route.js';
 
 const app = express();  
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 //routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/products", productRoute);
+app.use("/api/v1/banners", bannerRoute);
 
 //error middleware
 app.use(notFound);
