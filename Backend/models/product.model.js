@@ -63,6 +63,7 @@ const ProductSchema = mongoose.Schema({
 
 });
 
+ProductSchema.index({"$**" : "text"})
 const Product = mongoose.model("Product", ProductSchema);
 
 export default Product;
