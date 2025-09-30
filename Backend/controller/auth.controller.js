@@ -7,7 +7,7 @@ import generateToken from "../util/generateToken.js";
 //@access public
 
 const registerUser = asyncHandler(async(req, res) => {
-    const { name, emffail, password } = req.body;
+    const { name, email, password } = req.body;
     const userExists = await User.findOne({ email });
     if (userExists) {
         res.status(400);

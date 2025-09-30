@@ -1,7 +1,7 @@
 import express from "express";
 
-const router = express.router();
-import { greatebanner,getAllBanners, getRandomBanner,deleteBanner}from "../controller/banner.cotroller.js"
+const router = express.Router();
+import { createBanner,getAllBanners, getRandomBanner,deleteBanner} from "../controller/banner.controller.js"
 
 
 //CREATE BANNER ROUTE

@@ -52,4 +52,4 @@ const getRandomBanner = asyncHandler(async(req,res)=>{
     }
 });
 
-export {grtAllBanners, createBanner, deleteBanner, getRandomBanner};
+export {getAllBanners, createBanner, deleteBanner, getRandomBanner};

@@ -1,4 +1,4 @@
-import {ratinfProduct, getAllProducts, getProduct,createProduct,updateProduct,deleteProduct} from "../controller/product.controller.js";
+import {ratingProduct, getAllProducts, getProduct,createProduct,updateProduct,deleteProduct} from "../controller/product.controller.js";
 import express from "express";
 const router = express.Router();
 
