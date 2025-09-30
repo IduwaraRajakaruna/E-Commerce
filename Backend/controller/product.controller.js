@@ -78,14 +78,15 @@ const getAllProducts = asyncHandler(async(req,res)=>{
         })
     }else{
         products = await Product.find().sort({createdAt: -1});
+        res.status(200).json(products);
     }
 });    
 
 //RATE PRODUCT
-const ratinfProduct = asyncHandler(async(req,res) =>{
+const ratingProduct = asyncHandler(async(req,res) =>{
     const {star, name, comment, postedBy} = req.body;
 
-    if(star && name && coment && postedBy){
+    if(star && name && comment && postedBy){
         const postedBy = await Product.findByIdAndUpdate(req.params.id, 
             {
                 $push: {ratings: {star, name, comment, postedBy} },

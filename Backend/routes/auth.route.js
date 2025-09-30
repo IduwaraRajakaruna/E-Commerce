@@ -9,7 +9,7 @@ router.post('/register', registerUser);
 router.post('/login', loginUser);
 
 //Logout user routeer
-router.get('/logout', logOut);
+router.post('/logout', logOut);
 
 
 export default router;
