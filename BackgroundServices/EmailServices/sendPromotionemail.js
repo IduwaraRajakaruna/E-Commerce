@@ -1,29 +1,32 @@
 import ejs, { name } from 'ejs';
 import dotenv from 'dotenv';
 import sendMail from "../helpers/sendMail.js";
-import Order from "../models/order.model.js"
+import Product from "../models/product.model.js"
+import User from '../models/user.model.js';
+
 dotenv.config();
  
-const sendDeliverdOrderEmail = async () => {
-const orders = await Order.find({status:2});
-    if(orders.length > 0){
-        for(let order of orders){
+const sendPromotionEmail = async () => {
+const users = await User.find();
+const products = await Product.aggregate([
+    { $sample: { size: 5 } }
+])
+
+        for(let user of users){
             ejs.renderFile(
-                "templates/deliverdorder.ejs",
+                "templates/promotion.ejs",
                 {
-                    name: order.name,
-                    Products: order.products,
+                    products
                 },
                 async (err, data) => {
                     let messageoption = {
                         from: process.env.EMAIL,
-                        to: order.email,
-                        subject: "Your Order has been delivered",
+                        to: user.email,
+                        subject: "Your weekly products",
                         html: data,
                     };
                     try{
                         await sendMail(messageoption);
-                        await Order.findByIdAndUpdate(order._id, {$set: {status:3}});
                     } catch (error) {
                         console.log(error);
                     }
@@ -31,6 +34,6 @@ const orders = await Order.find({status:2});
             );
         }
     }
-};
 
-export default sendDeliverdOrderEmail;
+
+export default sendPromotionEmail;
