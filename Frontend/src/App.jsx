@@ -4,12 +4,14 @@ import {RouterProvider, createBrowserRouter, Outlet} from "react-router-dom";
 import Myaccount from "./pages/Myaccount";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Announcement from "./components/Announcement";
 
 function App() { 
 
   const Layout = () => {
     return (
     <div>
+      <Announcement/>
       <Navbar />
       <Outlet />
       <Footer />
